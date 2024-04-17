@@ -7,15 +7,12 @@ const BlogList = ({ toggleModal }) => {
 
   const handleDelete = async (id) => {
     try {
-      // Send DELETE request to the API
       await axios.delete(
         `https://crudcrud.com/api/54b054875aee4af78ce68ea72caf0288/blogDetails/${id}`
       );
-
-      // Update state after successful deletion
       setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== id));
     } catch (error) {
-      console.error("Error deleting todo:", error);
+      console.error(error);
     }
   };
 

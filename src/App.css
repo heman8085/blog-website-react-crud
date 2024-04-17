@@ -2,12 +2,10 @@
   text-align: center;
   padding: 20px;
 }
-
 h1 {
   font-size: 24px;
   margin-bottom: 20px;
 }
-
 .blogForm {
   margin-bottom: 20px;
 }
@@ -23,7 +21,6 @@ h1 {
   list-style: none;
   padding: 0;
 }
-
 .singleBlog {
   display:flex;
   align-items: center;

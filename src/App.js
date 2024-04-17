@@ -22,7 +22,6 @@ const App = () => {
             <h1>Blog App</h1>
             <button onClick={() => toggleModal()}>Add New Blog</button>
           </div>
-
           {showModal && (
             <Modal>
               <BlogForm closeModal={toggleModal} blogToEdit={blogToEdit} />

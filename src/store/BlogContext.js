@@ -15,13 +15,13 @@ const BlogProvider = ({ children }) => {
         setBlogs(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching blogs:", error);
+        console.error(error);
       });
   }, []);
 
-  const addBlog = (newBlog) => {
-    setBlogs([...blogs, newBlog]);
-  };
+  // const addBlog = (newBlog) => {
+  //   setBlogs([...blogs, newBlog]);
+  // };
 
   const editBlog = (id, newData) => {
     const updatedBlogs = blogs.map((blog) =>
@@ -31,7 +31,7 @@ const BlogProvider = ({ children }) => {
   };
 
   return (
-    <BlogContext.Provider value={{ blogs, addBlog, editBlog, setBlogs }}>
+    <BlogContext.Provider value={{ blogs, editBlog, setBlogs }}>
       {children}
     </BlogContext.Provider>
   );

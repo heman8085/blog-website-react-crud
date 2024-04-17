@@ -3,7 +3,8 @@ import axios from "axios";
 import { BlogContext } from "../store/BlogContext";
 
 const BlogForm = ({ closeModal, blogToEdit }) => {
-  const { addBlog, editBlog, setBlogs } = useContext(BlogContext);
+
+  const {  editBlog, setBlogs } = useContext(BlogContext);
   const [blog, setBlog] = useState({
     id: `${Math.random()}`,
     imageLink: "",
@@ -31,7 +32,7 @@ const BlogForm = ({ closeModal, blogToEdit }) => {
         );
         const newBlog = response.data;
         setBlogs((prevBlogs) => [...prevBlogs, newBlog]);
-        addBlog(newBlog);
+        //addBlog(newBlog);
       }
       setBlog({
         imageLink: "",
