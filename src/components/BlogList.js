@@ -8,9 +8,9 @@ const BlogList = ({ toggleModal }) => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `https://crudcrud.com/api/54b054875aee4af78ce68ea72caf0288/blogDetails/${id}`
+        `https://blog-website-c7ba7-default-rtdb.firebaseio.com/blogDetails/${id}.json`
       );
-      setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== id));
+      setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog.id !== id));
     } catch (error) {
       console.error(error);
     }
@@ -19,15 +19,15 @@ const BlogList = ({ toggleModal }) => {
   return (
     <ul className="allBlogs">
       {blogs.map((blog) => (
-        <li className="singleBlog" key={blog._id}>
-          <img src={blog.imageLink} alt={blog.title} width="200" height="200" />
+        <li className="singleBlog" key={blog.id}>
+          <img src={blog.imageLink} alt={blog.title} width="300" height="300" />
           <div>
             <h2>{blog.title}</h2>
             <p>{blog.description}</p>
           </div>
           <div>
             <button onClick={() => toggleModal(blog)}>Edit</button>
-            <button onClick={() => handleDelete(blog._id)}>Delete</button>
+            <button onClick={() => handleDelete(blog.id)}>Delete</button>
           </div>
         </li>
       ))}

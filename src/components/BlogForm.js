@@ -6,7 +6,6 @@ const BlogForm = ({ closeModal, blogToEdit }) => {
 
   const {  editBlog, setBlogs } = useContext(BlogContext);
   const [blog, setBlog] = useState({
-    id: `${Math.random()}`,
     imageLink: "",
     title: "",
     description: "",
@@ -26,13 +25,16 @@ const BlogForm = ({ closeModal, blogToEdit }) => {
       if (blogToEdit) {
         await editBlog(blogToEdit.id, blog);
       } else {
-        const response = await axios.post(
-          "https://crudcrud.com/api/54b054875aee4af78ce68ea72caf0288/blogDetails",
+         await axios.post(
+          "https://blog-website-c7ba7-default-rtdb.firebaseio.com/blogDetails.json",
           blog
         );
-        const newBlog = response.data;
+        const newBlog = {
+          imageLink: blog.imageLink,
+          title: blog.title,
+          description: blog.description,
+        };
         setBlogs((prevBlogs) => [...prevBlogs, newBlog]);
-        //addBlog(newBlog);
       }
       setBlog({
         imageLink: "",

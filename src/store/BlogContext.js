@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState ,useEffect} from "react";
 import axios from "axios";
 
 const BlogContext = createContext();
@@ -9,19 +9,26 @@ const BlogProvider = ({ children }) => {
   useEffect(() => {
     axios
       .get(
-        "https://crudcrud.com/api/54b054875aee4af78ce68ea72caf0288/blogDetails"
+        "https://blog-website-c7ba7-default-rtdb.firebaseio.com/blogDetails.json"
       )
       .then((response) => {
-        setBlogs(response.data);
+        const data = response.data;
+        const loadedBlog = [];
+        for (const key in data) {
+          loadedBlog.push({
+            id: key,
+            title: data[key].title,
+            imageLink: data[key].imageLink,
+            description:data[key].description,
+          })
+        }
+        setBlogs(loadedBlog);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [setBlogs]);
 
-  // const addBlog = (newBlog) => {
-  //   setBlogs([...blogs, newBlog]);
-  // };
 
   const editBlog = (id, newData) => {
     const updatedBlogs = blogs.map((blog) =>
