@@ -26,9 +26,9 @@ const BlogForm = ({ closeModal, blogToEdit }) => {
         await editBlog(blogToEdit.id, blog);
       } else {
          await axios.post(
-          "https://blog-website-c7ba7-default-rtdb.firebaseio.com/blogDetails.json",
-          blog
-        );
+           "https://redux-cart-a46f9-default-rtdb.firebaseio.com/blogDetails.json",
+           blog
+         );
         const newBlog = {
           imageLink: blog.imageLink,
           title: blog.title,

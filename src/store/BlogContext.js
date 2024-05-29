@@ -9,7 +9,7 @@ const BlogProvider = ({ children }) => {
   useEffect(() => {
     axios
       .get(
-        "https://blog-website-c7ba7-default-rtdb.firebaseio.com/blogDetails.json"
+        "https://redux-cart-a46f9-default-rtdb.firebaseio.com/blogDetails.json"
       )
       .then((response) => {
         const data = response.data;
@@ -19,8 +19,8 @@ const BlogProvider = ({ children }) => {
             id: key,
             title: data[key].title,
             imageLink: data[key].imageLink,
-            description:data[key].description,
-          })
+            description: data[key].description,
+          });
         }
         setBlogs(loadedBlog);
       })
